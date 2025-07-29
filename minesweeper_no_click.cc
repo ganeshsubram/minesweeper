@@ -1,12 +1,8 @@
-//
-// Copyright © 2025 Glydways, Inc.
-// https://glydways.com/
-//
-
 #include <array>
 #include <assert.h>
 #include <cstdint>
 #include <iostream>
+#include <stdexcept>
 #include <utility>
 #include <vector>
 
@@ -50,7 +46,14 @@ public:
     insert_bombs(bomb_positions);
   }
 
-  ClickResult click(const Position &click) { return ClickResult::IN_PROGRESS; }
+  ClickResult click(const Position &click) {
+
+    //
+    // TODO - Complete this section!
+    //
+
+    throw std::runtime_error("Not implemented - complete this section!");
+  }
 
   void print_board() { print_board_internal(false); }
 
@@ -98,14 +101,14 @@ int main() {
   std::vector<Position> moves = {{2, 4}, {0, 1}, {3, 2}, {2, 2}};
 
   Minesweeper<5, 7> game{bomb_locations};
-  game.print_board_debug();
+  game.print_board();
 
   for (const Position &move : moves) {
     std::cout << "Move: [" << move.first << ", " << move.second << "]"
               << std::endl;
 
     ClickResult result = game.click(move);
-    game.print_board_debug();
+    game.print_board();
 
     if (result == ClickResult::WIN) {
       std::cout << "Result: Win!" << std::endl;
